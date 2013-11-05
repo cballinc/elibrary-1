@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/emulate/!svn/ver/1031/java/yzk/elibrary/src/com/akun/elibrary/dao
+END
+CategoryDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/emulate/!svn/ver/876/java/yzk/elibrary/src/com/akun/elibrary/dao/CategoryDAO.java
+END
+ClassesDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/emulate/!svn/ver/861/java/yzk/elibrary/src/com/akun/elibrary/dao/ClassesDAO.java
+END
+LiteratureDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/emulate/!svn/ver/1009/java/yzk/elibrary/src/com/akun/elibrary/dao/LiteratureDAO.java
+END
+LiteratureforborrowDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/emulate/!svn/ver/1031/java/yzk/elibrary/src/com/akun/elibrary/dao/LiteratureforborrowDAO.java
+END
+LibuserDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/emulate/!svn/ver/880/java/yzk/elibrary/src/com/akun/elibrary/dao/LibuserDAO.java
+END
+BorrowinfoDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/emulate/!svn/ver/991/java/yzk/elibrary/src/com/akun/elibrary/dao/BorrowinfoDAO.java
+END
+StudentDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/emulate/!svn/ver/861/java/yzk/elibrary/src/com/akun/elibrary/dao/StudentDAO.java
+END
+BorrowinfoDAOImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/emulate/!svn/ver/991/java/yzk/elibrary/src/com/akun/elibrary/dao/BorrowinfoDAOImpl.java
+END

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	<!-- 定义dataSource数据源 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" destroy-method="close"> 
+      <property name="driverClassName"> 
+          <value>com.microsoft.sqlserver.jdbc.SQLServerDriver</value> 
+      </property> 
+      <property name="url"> 
+          <!--<value>jdbc:sqlserver://192.168.0.173:1433;DatabaseName=elibrary</value>-->
+           <value>jdbc:sqlserver://localhost:1433;DatabaseName=elibrary</value>
+      </property> 
+      <property name="username"> 
+          <value>sa</value> 
+      </property> 
+      <property name="password">
+          <value>infodragon</value>
+      </property> 
+  </bean>
+  
+  <!--ibatis事务管理类-->
+	<bean id="transactionManagerIbatis"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!--ibatis事务通知-->
+	<tx:advice id="txAdvice" transaction-manager="transactionManagerIbatis">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="do*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<!--ibatis事务切面-->
+	<aop:config>
+		<aop:pointcut id="bizMethods" expression="execution(* com.akun.elibrary.bo.imp.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="bizMethods" />
+	</aop:config>
+  	<!-- 配置ibatis sqlMapClient -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:com\akun\elibrary\sqlmap\SqlMapConfig.xml</value>
+		</property>
+		<property name="dataSource">
+			<ref bean="dataSource"/>
+		</property>
+	</bean>
+    <!--管理员登录libuser-->
+    <bean id="userDAO" class="com.akun.elibrary.dao.imp.LibuserDAOImpl">
+        <property name="sqlMapClient" ref="sqlMapClient"></property>
+    </bean>
+    <bean id="userBO" class="com.akun.elibrary.bo.imp.LibuserBOImp">
+        <property name="userDAO" ref="userDAO" />
+    </bean>
+    <bean id="LibuserAction" class="com.akun.elibrary.action.LibuserAction">
+    	<property name="userBO" ref="userBO"/>
+    </bean>
+    <!--Student学生信息、学生登陆注销-->
+    <bean id="studentDAO" class="com.akun.elibrary.dao.imp.StudentDAOImpl">
+    	<property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+    <bean id="studentBO" class="com.akun.elibrary.bo.imp.StudentBOImp">
+    	<property name="studentDAO" ref="studentDAO"/>
+    </bean>
+    <bean id="StudentAction" class="com.akun.elibrary.action.StudentAction">
+    	<property name="studentBO" ref="studentBO"/>
+    	<property name="classesBO" ref="classesBO"/>
+    </bean>
+    <!--班级信息Classes-->
+    <bean id="classesDAO" class="com.akun.elibrary.dao.imp.ClassesDAOImpl">
+    	<property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+    <bean id="classesBO" class="com.akun.elibrary.bo.imp.ClassesBOImp">
+    	<property name="classesDAO" ref="classesDAO"/>
+    </bean>
+    <bean id="ClassesAction" class="com.akun.elibrary.action.ClassesAction">
+    	<property name="classesBO" ref="classesBO"/>
+    </bean>
+    <!--图书大类Category-->
+    <bean id="categoryDAO" class="com.akun.elibrary.dao.imp.CategoryDAOImpl">
+    	<property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+    <bean id="categoryBO" class="com.akun.elibrary.bo.imp.CategoryBOImp">
+    	<property name="categoryDAO" ref="categoryDAO"/>
+    </bean>
+    <bean id="CategoryAction" class="com.akun.elibrary.action.CategoryAction">
+    	<property name="categoryBO" ref="categoryBO"/>
+    </bean>
+     <!--资料管理Literatre-->
+    <bean id="literatureDAO" class="com.akun.elibrary.dao.imp.LiteratureDAOImpl">
+    	<property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+    <bean id="literatureBO" class="com.akun.elibrary.bo.imp.LiteratureBOImp">
+    	<property name="literatureDAO" ref="literatureDAO"/>
+    </bean>
+    <bean id="LiteratureAction" class="com.akun.elibrary.action.LiteratureAction">
+    	<property name="literatureBO" ref="literatureBO"/>
+    </bean>
+<!--Literatureforborrow五表联合查询图书借阅管理--><!--BorrowInfo借阅信息-->
+    <bean id="literatureforborrowDAO" class="com.akun.elibrary.dao.imp.LiteratureforborrowDAOImpl">
+    	<property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+    <bean id="borrowinfoDAO" class="com.akun.elibrary.dao.imp.BorrowinfoDAOImpl">
+    	<property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
+    <bean id="borrowListBO" class="com.akun.elibrary.bo.imp.BorrowListBOImp">
+    	<property name="literatureforborrowDAO" ref="literatureforborrowDAO"/>
+    	<property name="borrowinfoDAO" ref="borrowinfoDAO"/>
+    	<property name="studentDAO" ref="studentDAO"/>
+    	<property name="literatureDAO" ref="literatureDAO"/>
+    </bean>
+    <bean id="BorrowListAction" class="com.akun.elibrary.action.BorrowListAction">
+    	<property name="borrowListBO" ref="borrowListBO"/>
+    </bean>
+</beans>

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/emulate/!svn/ver/1039/java/yzk/elibrary/src
+END
+struts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/emulate/!svn/ver/1053/java/yzk/elibrary/src/struts.xml
+END
+ibatorConfig.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/emulate/!svn/ver/991/java/yzk/elibrary/src/ibatorConfig.xml
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/emulate/!svn/ver/861/java/yzk/elibrary/src/log4j.properties
+END

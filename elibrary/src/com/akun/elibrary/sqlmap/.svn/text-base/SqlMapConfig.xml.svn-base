@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+  <!-- 全局配置选项 -->
+  <settings     
+    useStatementNamespaces="true"
+    cacheModelsEnabled="true"
+    enhancementEnabled="true"
+    lazyLoadingEnabled="true" 
+    maxRequests="32"
+    maxSessions="10"
+    maxTransactions="5"
+  />
+
+  <!-- 配置映射文件 -->
+	<sqlMap resource="com/akun/elibrary/sqlmap/dbo_borrowInfo_SqlMap.xml" />
+	<sqlMap resource="com/akun/elibrary/sqlmap/dbo_category_SqlMap.xml" />  
+	<sqlMap resource="com/akun/elibrary/sqlmap/dbo_classes_SqlMap.xml" />
+	<sqlMap resource="com/akun/elibrary/sqlmap/dbo_literature_SqlMap.xml" />  
+	<sqlMap resource="com/akun/elibrary/sqlmap/dbo_libuser_SqlMap.xml" />
+	<sqlMap resource="com/akun/elibrary/sqlmap/dbo_literatureForBorrow_SqlMap.xml" /> 
+	<sqlMap resource="com/akun/elibrary/sqlmap/dbo_student_SqlMap.xml" />  
+ 
+</sqlMapConfig>

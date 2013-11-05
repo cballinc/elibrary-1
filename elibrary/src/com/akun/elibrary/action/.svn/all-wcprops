@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/emulate/!svn/ver/1039/java/yzk/elibrary/src/com/akun/elibrary/action
+END
+LibuserAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/emulate/!svn/ver/1009/java/yzk/elibrary/src/com/akun/elibrary/action/LibuserAction.java
+END
+BorrowListAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/emulate/!svn/ver/1050/java/yzk/elibrary/src/com/akun/elibrary/action/BorrowListAction.java
+END
+StudentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/emulate/!svn/ver/1053/java/yzk/elibrary/src/com/akun/elibrary/action/StudentAction.java
+END
+CategoryAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/emulate/!svn/ver/918/java/yzk/elibrary/src/com/akun/elibrary/action/CategoryAction.java
+END
+ClassesAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/emulate/!svn/ver/861/java/yzk/elibrary/src/com/akun/elibrary/action/ClassesAction.java
+END
+LiteratureAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/emulate/!svn/ver/1009/java/yzk/elibrary/src/com/akun/elibrary/action/LiteratureAction.java
+END

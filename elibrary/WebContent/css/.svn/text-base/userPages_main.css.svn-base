@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+body, div, iframe, a, dl, dt, dd, ul, ol, li, pre, form, img, fieldset, input, textarea, p, blockquote, table, th, tr, td, button { padding:0px; margin:0px; font-family:微软雅黑,宋体,tahoma,arial,helvetica; font-size:13px; color:#333333 }
+h1, h2, h3, h4, h5, h6 { padding:0px; margin:0px; font-family:微软雅黑,宋体; color:#333333 }
+div { word-wrap:break-word; text-align:left }
+ul { list-style-type:none; margin:0px; padding:0px }
+a { text-decoration:none; cursor:pointer }
+.cleaner { clear:both }
+.hide { display:none }
+.show { display:block }
+
+.header_bg { background-color:#006699; height:auto !important; height:100px; min-height:100px; min-width:960px }
+#header { background-color:#006699; position:relative; width:960px; margin:0px auto }
+#hd_logo { width:960px; height:100px; background:#006699 url('../images/userPages_main_national_emblem.jpg') no-repeat top center }
+#hd_banner { display:none }
+#hd_loginbar { position:absolute; left:712px; top:46px; height:58px; line-height:26px }
+#hd_loginbar a { text-decoration:underline; color:aliceblue }
+#hd_loginbar a:hover { color:orange }
+
+.navi_bg { background-color:gainsboro; height:auto !important; height:28px; min-height:28px; min-width:960px }
+#navi { z-index:999; background-color:gainsboro; width:960px; margin:0px auto }
+#navi ul { padding-left:180px }
+#navi ul li { z-index:999; float:left; position:relative }
+#navi ul li a { display:block; float:left; height:28px; line-height:28px; padding:0px 15px }
+#navi ul li a:hover, #navi ul li a:focus { background-color:#BEDEE4 }
+#navi ul li ul { padding-left:0px; position:absolute; left:0px; top:28px; width:120px; background-color:#F1F1F1 }
+#navi li li a { width:120px; padding:0px; text-align:center }
+
+.container_bg { width:960px; margin:0px auto; background-image:url('../images/main_content_bg_center.jpg'); background-repeat:repeat-y }
+#container { width:950px; margin:0px auto }
+
+.footer_bg { background-color:#125C8A; border-top:1px solid #666666; min-width:960px }
+#footer { background-color:#125C8A; width:960px; margin:0px auto }
+#f_police { float:left; overflow:hidden; width:120px; margin:12px 0px 6px 12px }
+#f_police img { width:76px; height:79px }
+#f_copyright_cn { float:left; width:336px; color:white; padding:21px 0px 21px 0px }
+#f_contentus { float:left; width:480px; color:white; padding:21px 0px 21px 0px }
+#f_copyright_en { border-top:1px solid lightblue; padding:12px 0px 24px 0px; color:lightblue; text-align:center }
+
+#sidebar { float:left; width:160px; padding:48px 0px 48px 7px }
+#sidebar ul li { margin:3px 0px 3px 0px }
+#sidebar ul li a { display:block; font-weight:bold; color:#444444; width:160px; height:30px; background-image:url("../images/main_sidebar_bg.png"); background-repeat:no-repeat; margin:0px auto; line-height:30px; text-align:center; cursor:pointer }
+#sidebar ul li a:hover { color:#993333 }
+#sidebar ul li ul { display:none; width:158px; background-color:whitesmoke; border-left:1px solid #e3e3e3; border-right:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3 }
+#sidebar ul li ul li { margin:0px auto; text-align:center }
+#sidebar ul li ul li a { color:#555555; height:26px; font-weight:normal; margin:0px auto; width:158px; line-height:26px; background-image:none }
+#sidebar ul li ul li a:hover { color:#993333 }
+
+#content_page { float:left; width:776px; height:auto !important; height:480px; min-height:480px }
+
+
+

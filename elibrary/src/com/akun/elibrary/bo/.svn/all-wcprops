@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/emulate/!svn/ver/1035/java/yzk/elibrary/src/com/akun/elibrary/bo
+END
+LiteratureBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/emulate/!svn/ver/1009/java/yzk/elibrary/src/com/akun/elibrary/bo/LiteratureBO.java
+END
+LibuserBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/emulate/!svn/ver/918/java/yzk/elibrary/src/com/akun/elibrary/bo/LibuserBO.java
+END
+BorrowListBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/emulate/!svn/ver/1035/java/yzk/elibrary/src/com/akun/elibrary/bo/BorrowListBO.java
+END
+StudentBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/emulate/!svn/ver/861/java/yzk/elibrary/src/com/akun/elibrary/bo/StudentBO.java
+END
+CategoryBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/emulate/!svn/ver/876/java/yzk/elibrary/src/com/akun/elibrary/bo/CategoryBO.java
+END
+ClassesBO.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/emulate/!svn/ver/861/java/yzk/elibrary/src/com/akun/elibrary/bo/ClassesBO.java
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/emulate/!svn/ver/1035/java/yzk/elibrary/src/com/akun/elibrary/sqlmap
+END
+dbo_literature_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/emulate/!svn/ver/1046/java/yzk/elibrary/src/com/akun/elibrary/sqlmap/dbo_literature_SqlMap.xml
+END
+SqlMapConfig.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/emulate/!svn/ver/861/java/yzk/elibrary/src/com/akun/elibrary/sqlmap/SqlMapConfig.xml
+END
+dbo_literatureForBorrow_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/emulate/!svn/ver/1035/java/yzk/elibrary/src/com/akun/elibrary/sqlmap/dbo_literatureForBorrow_SqlMap.xml
+END
+dbo_libuser_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/emulate/!svn/ver/880/java/yzk/elibrary/src/com/akun/elibrary/sqlmap/dbo_libuser_SqlMap.xml
+END
+dbo_borrowInfo_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/emulate/!svn/ver/991/java/yzk/elibrary/src/com/akun/elibrary/sqlmap/dbo_borrowInfo_SqlMap.xml
+END
+dbo_student_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/emulate/!svn/ver/1047/java/yzk/elibrary/src/com/akun/elibrary/sqlmap/dbo_student_SqlMap.xml
+END
+dbo_category_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/emulate/!svn/ver/876/java/yzk/elibrary/src/com/akun/elibrary/sqlmap/dbo_category_SqlMap.xml
+END
+dbo_classes_SqlMap.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/emulate/!svn/ver/876/java/yzk/elibrary/src/com/akun/elibrary/sqlmap/dbo_classes_SqlMap.xml
+END
