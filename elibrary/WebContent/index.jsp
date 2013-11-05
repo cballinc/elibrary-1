@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="refresh" content="0;url=<%=request.getContextPath()%>/pages/studentPages/studentPage.jsp">
-<title>Insert title here</title>
+<title>Insert title here, ok?</title>
 </head>
 <body>
 
