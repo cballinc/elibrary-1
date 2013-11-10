@@ -5,7 +5,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/main.css" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>AKUN图书借阅平台</title>
+  <title>Library Management System</title>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/jquery.ui.css" />
   <script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.js"></script>
   <script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.ui.js"></script>
@@ -37,12 +37,12 @@ var limit=15;
 var cm = new Ext.grid.ColumnModel([
     new Ext.grid.RowNumberer(),
 	{
-		header : "名称",
+		header : "Name",
 		dataIndex : "literaturename",
 		width : 130,
 		sortable : true
 	},{
-		header : "类别",
+		header : "Category",
 		dataIndex : "categoryid",
 		width : 80,
 		sortable : true,
@@ -56,27 +56,27 @@ var cm = new Ext.grid.ColumnModel([
         }
 	    }
 	},{
-		header : "索引号",
+		header : "Index",
 		dataIndex : "lindex",
 		width : 50,
 		sortable : true
 	},{
-		header : "作者",
+		header : "Author",
 		dataIndex : "author",
 		width : 80,
 		sortable : true
 	},{
-		header : "出版社",
+		header : "Press",
 		dataIndex : "press",
 		width : 160,
 		sortable : true
 	},{
-		header : "总数",
+		header : "Total Num",
 		dataIndex : "num",
 		width : 40,
 		sortable : true
 	},{
-		header : "已借出",
+		header : "Borrowed Num",
 		dataIndex : "outnum",
 		width : 50,
 		sortable : true
@@ -117,11 +117,11 @@ store.on("beforeload", function(){
 	store.baseParams.searchAddition = query.getRawValue();
 });
 var queryLabel = new Ext.form.Label({
-	text:'类型名称：'
+	text:'Category：'
 });
 
 var queryButton = new Ext.Button({
-	text:'查询',
+	text:'Search',
 	width:'30',
 	handler:function(){
 		var queryValue = query.getValue();
@@ -133,14 +133,14 @@ var queryButton = new Ext.Button({
 
 //资料列表主显panel 
 var literaturePanel = new Ext.Panel( {
-	title : "<center><p><font size=3>图书查询</font></p></center>",
+	title : "<center><p><font size=3>Book Search</font></p></center>",
 	width : 600,
 	frame : true,
 	headerAsText:false,
 	height : 300,
 	tbar : ["->",{//搜索框
 		xtype :"label",
-		text:"名称关键字:",
+		text:"Name Keywords:",
 		width:120
 	},query,"&nbsp",queryButton],
 	items:[{
@@ -153,9 +153,9 @@ var literaturePanel = new Ext.Panel( {
 	bbar : new Ext.PagingToolbar( {
 		pageSize : 15,
 		displayInfo : true,
-		displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+		displayMsg : 'List {0} to {1} records，total {2} ',
 		store:store,
-		emptyMsg : "没有记录"
+		emptyMsg : "No record"
 	})
 });
 //特定学生借阅信息----------------------------------------------------------------------------------
@@ -172,27 +172,27 @@ var sm=new Ext.grid.CheckboxSelectionModel();//全选/反选
 var borrowedcm = new Ext.grid.ColumnModel([
 	sm,
 	{
-		header : "名称",
+		header : "Name",
 		dataIndex : "borrowedliteraturename",
 		width : 130,
 		sortable : true
 	},{
-		header : "借阅数",
+		header : "BorrowNum",
 		dataIndex : "borrowedborrownum",
 		width : 60,
 		sortable : true
 	},{
-		header : "借书时间",
+		header : "BorrowTime",
 		dataIndex : "borrowedborrowtime",
 		width : 155,
 		sortable : true
 	},{
-		header : "应还时间",
+		header : "Supposed Return Time",
 		dataIndex : "borrowedexpectedreturntime",
 		width : 155,
 		sortable : true
 	},{
- 		header : "延期",
+ 		header : "Defer",
  		dataIndex : "defer",
  		width : 60,
  		sortable : true,
@@ -204,7 +204,7 @@ var borrowedcm = new Ext.grid.ColumnModel([
 		      allowBlank : false,
 		      editable : true,
 		      mode : 'remote',
-		      store: [[1, '一个月']],
+		      store: [[1, 'One Month']],
 		      displayField:'',
 		      valueField:''
  		})
@@ -223,7 +223,7 @@ var studentBorrowedLiteratureGrid = new Ext.grid.EditorGridPanel({
 });
 
 var studentBorrowedliteraturePanel = new Ext.Panel( {
-	title : "<center><p><font size=3>图书查询</font></p></center>",
+	title : "<center><p><font size=3>Book Search</font></p></center>",
 	width : 600,
 	frame : true,
 	headerAsText:false,
@@ -236,14 +236,14 @@ var studentBorrowedliteraturePanel = new Ext.Panel( {
 	}],
 	buttons :[
 	      	{
-	      		text:'确认续借',
+	      		text:'Confirm',
 	      		xtype:'button',
 	      		handler:function(){
 				var wh =  studentBorrowedLiteratureGrid.getSelectionModel().getSelections();//通过多选框删除
 				var ids="";
 				var expectedReturnTimes="";
 				if(wh.length<1){
-					Ext.Msg.alert('提示', '请选中至少一条数据');
+					Ext.Msg.alert('Notice', 'Please select at lease one record!');
 					return;
 				}
 				for(var i=0;i<wh.length;i++){
@@ -256,12 +256,12 @@ var studentBorrowedliteraturePanel = new Ext.Panel( {
 				if(expectedReturnTimes!=""){
 					expectedReturnTimes=expectedReturnTimes.substring(0,expectedReturnTimes.length-1);
 				}
-				Ext.Msg.confirm("操作确认","是否确认操作？",function(btn){
+				Ext.Msg.confirm("Confirm","Are you sure？",function(btn){
 					if (btn == 'yes'){
 						 Ext.Ajax.request({//续借action
 							url: '<%=request.getContextPath()%>/deferBorrow.action',
 							success: function(res){
-								Ext.Msg.alert('提示', res.responseText);
+								Ext.Msg.alert('Notice', res.responseText);
 								borrowedstore.reload();
 								wh.length=0;			  											
 							},
@@ -308,7 +308,7 @@ Ext.onReady(function() {
 		<div id="hd_loginbar">
 		   <br/>
 		   <% Student loginedStudent= new Student() ; if(null != session.getAttribute("loginedStudent")) { loginedStudent = (Student) session.getAttribute("loginedStudent"); } %>
-        <span style="color:white">欢迎您，<%=loginedStudent.getSname() %>！</span><a style="color:lightblue" href="<%=request.getContextPath()%>/studentLogout.action">注销</a>
+        <span style="color:white">Welcome，<%=loginedStudent.getSname() %>！</span><a style="color:lightblue" href="<%=request.getContextPath()%>/studentLogout.action">注销</a>
         </div>
 		</div>
 		
@@ -317,7 +317,7 @@ Ext.onReady(function() {
 			
 				<li id="home"><span class="header"></span>
 					<div class="inner">
-						<h2>欢迎使用AKUN图书馆借阅平台</h2>
+						<h2>Welcome to use Library Management System</h2>
 						<p><em>————————————————————————————————————————————————————————</em></p>
 						<img src="images/templatemo_image_01.jpg" alt="Image 01" class="image_fl" />
 						<div class="col_half float_r">
@@ -336,7 +336,7 @@ Ext.onReady(function() {
 			
 				<li id="about"><span class="header"></span>
 					<div class="inner">
-					    <h2>图书查询</h2>
+					    <h2>Book Search</h2>
 						<div id="literatureListPanel"></div>
 						
 					</div>
@@ -344,7 +344,7 @@ Ext.onReady(function() {
 			
 				<li id="social"><span class="header"></span>
 					<div class="inner">
-					    <h2>个人借书列表</h2>
+					    <h2>Personal Borrow History</h2>
 						<div id="studentBorrowedliteraturePanel"></div>
 						
 					</div>
@@ -352,7 +352,7 @@ Ext.onReady(function() {
 			
 				<li id="portfolio"><span class="header"></span>
 					<div class="inner">
-						<h2>平台介绍</h2>
+						<h2>Platform Introduction</h2>
 						<!--
 						<ul id="gallery">
 							 <li><a href="images/portfolio/01-l.jpg" rel="lightbox[portfolio]" title="Curabitur facilisis auctor risus, eget lacinia leo feugiat ac."><img src="images/portfolio/01.jpg" alt="Image 01" /></a></li>
@@ -366,38 +366,15 @@ Ext.onReady(function() {
 					</div>
 				</li>
 				
-				<li id="contact"><span class="header"></span>
-					<div class="inner">
-						<h2>制作人</h2>
-						<p>本平台由个人于2012.2-2012.5，历时三个月完成，基本流程和主要功能都已实现，虽做了大量输入验证，但由于
-						时间和精力限制，还有不完善的地方。如发现有bug存在，欢迎与我联系并指正。谢谢您的关注！</p>
-						<h4>杨宗昆</h4> &nbsp;&nbsp;&nbsp;<h4>指导老师：李浩</h4>
-						<div id="contact_form"  class="col_w280 float_l">
-							<img src="images/portfolio/06.jpg"></img>
-						</div>
-                        
-                        <div class="col_w280 float_r">
-                            <h4><strong>联系信息</strong></h4>
-                            <h4><strong>云南大学软件学院</strong></h4>
-                            <br/>
-                            <strong>QQ:</strong> 371505199<br />   <br/>       
-                            <strong>Email:</strong> <a href="mailto:zk.yang1012@gmail.com">zk.yang1012@gmail.com</a>
-               			</div>
-						
-					</div>
-				</li>
-			
 			</ul>
 			
 		</div> <!-- END of content -->
 	</div> <!-- END of templatemo_main -->
 	<div id="entrances">
-	 <a href="<%=request.getContextPath()%>/pages/userPages/userPage.jsp">员工入口</a>&nbsp;|&nbsp;
-     <a href="<%=request.getContextPath()%>/pages/adminPages/login.jsp">管理员入口</a>
+	 <a href="<%=request.getContextPath()%>/pages/userPages/userPage.jsp">Librarian Entrance</a>&nbsp;|&nbsp;
+     <a href="<%=request.getContextPath()%>/pages/adminPages/login.jsp">System Administrator Entrance</a>
 	</div>
-    <div id="templatemo_footer">
-    <span>Copyright © 2012 - 2013 Zongkun Yang All Rights Reserved.</span><br /><span>云南大学 杨宗昆 版权所有</span> 
-    </div>
+    
 </div> 
 
 </body>

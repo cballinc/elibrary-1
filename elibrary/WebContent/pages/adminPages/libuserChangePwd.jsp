@@ -8,42 +8,42 @@
 
 var oldPwdTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
-	fieldLabel : '原密码',
+	fieldLabel : 'Previous Password',
 	width:220,
 	anchor:'90%',
 	maxLength : 15,
 	name:"oldPwd",
-	maxLengthText : "最大长度为15",
+	maxLengthText : "Max length is 15",
 	allowBlank : false,
-    blankText : "请输入原密码密码",
+    blankText : "Please type in the previous password!",
     	inputType:'password'
 });
 var newPwdTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
-	fieldLabel : '新密码',
+	fieldLabel : 'New Password',
 	width:220,
 	anchor:'90%',
 	maxLength : 15,
 	minLength: 4,
 	name:"newPwd",
-	maxLengthText : "最大长度为16",
-	minLengthText:"最小长度为4",
+	maxLengthText : "Max length is 16",
+	minLengthText:"Min Length is 4",
 	allowBlank : false,
-    blankText : "请输入新密码",
+    blankText : "Please type in the previous password!",
     inputType:'password'
 });
 var newPwdTextFeild2=new Ext.form.TextField({
 	margins : '0 0 0 0',
-	fieldLabel : '再次输入新密码',
+	fieldLabel : 'Comfirm Password',
 	width:220,
 	anchor:'90%',
 	maxLength : 15,
 	minLength: 4,
 	name:"newPwd2",
-	maxLengthText : "最大长度为16",
-	minLengthText:"最小长度为4",
+	maxLengthText : "Max length is 16",
+	minLengthText:"Min length is 4",
 	allowBlank : false,
-    blankText : "请再次输入新密码密码",
+    blankText : "Please type in previous password again!",
     inputType:'password'
 });
 var libuserChangePwd = new Ext.form.FormPanel( {
@@ -86,13 +86,13 @@ var libuserChangePwd = new Ext.form.FormPanel( {
 		items : newPwdTextFeild2
 	}],
 	buttons:[{
-		text:'保存',
+		text:'Save',
 		handler:function(){
 		    libuserChangePwd.getForm().submit({
-				waitTitle : '请稍候',  
-                waitMsg : '正在提交表单数据,请稍候...', 
+				waitTitle : 'Wait...',  
+                waitMsg : 'Processing the form, please wait...', 
 				success : function(f, rep) {
-					Ext.MessageBox.alert("提示", rep.result.msg);
+					Ext.MessageBox.alert("Notice", rep.result.msg);
 				}
 			});
 		}

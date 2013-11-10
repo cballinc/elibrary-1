@@ -6,10 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript">
 function imgDel(delId) {
-	Ext.Msg.confirm("确认", "您确定要删除吗？",
+	Ext.Msg.confirm("Comfirm", "Delete？",
 		function(btn) {		    
 			if (btn == "yes") {		
-				Ext.Msg.alert("提示","删除成功");
+				Ext.Msg.alert("Notice","Completed");
 			}
 		}
 	);
@@ -48,7 +48,7 @@ var store = new Ext.data.JsonStore({//数据源
 
 var classesCombo=new Ext.form.ComboBox({
 	margins:'0 0 0 0', 
-	fieldLabel: '<font color = "red">*</font>班级',		    	
+	fieldLabel: '<font color = "red">*</font>Class',		    	
 	allowBlank:false, 
 	width:220,
 	height: 25,
@@ -64,7 +64,7 @@ var classesCombo=new Ext.form.ComboBox({
 });
 var sexCombo=new Ext.form.ComboBox({
 	margins:'0 0 0 0', 
-	fieldLabel: '<font color = "red">*</font>性别',		    	
+	fieldLabel: '<font color = "red">*</font>Sex',		    	
 	displayField:'',
 	valueField:'',
 	allowBlank:false, 
@@ -74,7 +74,7 @@ var sexCombo=new Ext.form.ComboBox({
 	editable : false,
 	hiddenName:"student.sex",
 	mode:'local',
-	store: [[1, '男'],[0, '女']],
+	store: [[1, 'Male'],[0, 'Female']],
 	triggerAction : 'all'		
 });
 		
@@ -82,12 +82,12 @@ var sm=new Ext.grid.CheckboxSelectionModel();//全选/反选
 var cm = new Ext.grid.ColumnModel([
 	sm,
 	{
-		header : "学号",
+		header : "SID",
 		dataIndex : "snumber",
 		width : 80,
 		sortable : true
 	},{
-		header : "姓名",
+		header : "Name",
 		dataIndex : "sname",
 		width : 100,
 		editor : new Ext.form.TextField({
@@ -95,36 +95,36 @@ var cm = new Ext.grid.ColumnModel([
 		}),
 		sortable : true
 	},{
-		header : "性别",
+		header : "Sex",
 		dataIndex : "sex",
 		width : 50,
 		renderer:function(value){
           if(value == 0){
-              return "女";
+              return "Female";
           }else{
-              return "男";
+              return "Male";
           }
 	    }
 	},{
-		header :"班级",
+		header :"Class",
 		dataIndex : "classnumber",
 		width : 80,
 		sortable : true
 	},{
-		header : "出生日期",
+		header : "Birthdate",
 		dataIndex : "birthdate",									
 		width : 100,
 		renderer : dateRender,
 		editor : new Ext.form.DateField ({
 			allowBlank : false,
-			blankText: '请输入出生日期！',								
+			blankText: 'Please type in birthdate！',								
 			editable : false,
 			format : "Y-m-d"
 		}),
 		
 		sortable : true
 	},{
-		header : "电话号码",
+		header : "Tel",
 		dataIndex : "tel",
 		width : 100,
 		editor : new Ext.form.TextField({
@@ -132,7 +132,7 @@ var cm = new Ext.grid.ColumnModel([
 		}),
 		sortable : true
 	},{
-		header : "住址",
+		header : "Address",
 		dataIndex : "address",
 		width : 140,
 		editor : new Ext.form.TextField({
@@ -140,7 +140,7 @@ var cm = new Ext.grid.ColumnModel([
 		}),
 		sortable : true
 	},{
-		header : "邮编",
+		header : "Zip Code",
 		dataIndex : "zipcode",
 		width : 100,
 		editor : new Ext.form.TextField({
@@ -168,23 +168,23 @@ var snumberTextFeild=new Ext.form.TextField({
 	allowBlank : false,
 	width:220,
 	anchor:'90%',
-	blankText: '请输入学号！',
+	blankText: 'Please type in SID！',
 	maxLength : 15,
 	name:"student.snumber",
-	maxLengthText : "学号最大长度为15"
+	maxLengthText : "Maximum Length of SID is 15"
 });
 
 var studentNameTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
 	//name: 'userInfo.companyInfomation.address', 
-	fieldLabel : '<font color = "red">*</font>学生名',
+	fieldLabel : '<font color = "red">*</font>Student Name',
 	allowBlank : false,
 	width:220,
 	anchor:'90%',
-	blankText: '请输入学生名！',
+	blankText: 'Please type in student name！',
 	maxLength : 25,
 	name:"student.sname",
-	maxLengthText : "学生名最大长度为25"
+	maxLengthText : "Maximun length of studnet name is 25"
 });
 var btn =snumberTextFeild; //addPanel.getForm().findField('SS');
 //焦点离开时触发
@@ -201,8 +201,8 @@ btn.on('blur', function() {
 					},
 					success: function(res){
 						alert(res.responseText);
-						if(res.responseText=="学号已存在!"){
-						Ext.Msg.alert('提示', res.responseText);
+						if(res.responseText=="The SID already exits!"){
+						Ext.Msg.alert('Notice', res.responseText);
 						snumberTextFeild.setValue("");
 						//store.reload();
 						}
@@ -212,52 +212,52 @@ btn.on('blur', function() {
 var birthdateFeild = new Ext.form.DateField( {
 	margins : '0 0 0 0',
 	//name: 'userInfo.companyInfomation.address', 
-	fieldLabel : '出生日期',
+	fieldLabel : 'Birthdate',
 	allowBlank : true,
 	width:220,
 	anchor:'90%',
-	blankText: '请输入出生日期！',
+	blankText: 'Please type in birthdate！',
 	editable : false,
 	name:"student.birthdate",
 	format : "Y-m-d",
 	anchor : '90%',
 	maxValue:new Date(),
-	maxText:"出生日期小于当天"
+	maxText:"The birthdate is invalid!"
 });
 
 var studentTelTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
 	//name: 'userInfo.companyInfomation.address', 
-	fieldLabel : '联系电话',
+	fieldLabel : 'Tel',
 	width:220,
 	anchor:'90%',
 	maxLength : 15,
 	name:"student.tel",
-	maxLengthText : "最大长度为15"
+	maxLengthText : "Maximum length is 15"
 });
 var studentAddressTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
 	//name: 'userInfo.companyInfomation.address', 
-	fieldLabel : '住址',
+	fieldLabel : 'Address',
 	width:220,
 	anchor:'90%',
 	maxLength : 50,
 	name:"student.address",
-	maxLengthText : "最大长度为50"
+	maxLengthText : "Maximum length is 50"
 });
 var studentZipcodeTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
 	//name: 'userInfo.companyInfomation.address', 
-	fieldLabel : '邮政编码',
+	fieldLabel : 'Zip Code',
 	width:220,
 	anchor:'90%',
 	maxLength : 10,
 	name:"student.zipcode",
-	maxLengthText : "邮政编码须为6位"
+	maxLengthText : "The length of Zip code must be 5"
 });
 
 var closeButton=new Ext.Button({
-	text:'关闭',				
+	text:'Close',				
 	minWidth:80,
 	handler:function(){
 		addWindow.hide();
@@ -338,13 +338,13 @@ var addPanel = new Ext.form.FormPanel( {
 		items : studentZipcodeTextFeild
 	}],
 	buttons:[{
-		text:'保存',
+		text:'Save',
 		handler:function(){
 			addPanel.getForm().submit({
-				waitTitle : '请稍候',  
-                waitMsg : '正在提交表单数据,请稍候...', 
+				waitTitle : 'Wati',  
+                waitMsg : 'Processing the form, please wait...', 
 				success : function(f, rep) {
-					Ext.MessageBox.alert("提示", rep.result.msg);
+					Ext.MessageBox.alert("Notice", rep.result.msg);
 					addWindow.hide();
 					store.reload();
 				}
@@ -354,7 +354,7 @@ var addPanel = new Ext.form.FormPanel( {
 });
 			
 var addWindow = new Ext.Window( {
-	title : '添加学生信息',
+	title : 'Add Student Information',
 	layout : 'fit',
 	hidden : true,
 	width : 400,
@@ -395,11 +395,11 @@ store.on("beforeload", function(){
 });
 
 var queryLabel = new Ext.form.Label({
-	text:'类型名称：'
+	text:'Category Name：'
 });
 
 var queryButton = new Ext.Button({
-	text:'查询',
+	text:'Search',
 	width:'30',
 	handler:function(){
 		var queryValue = query.getValue();
@@ -411,27 +411,27 @@ var queryButton = new Ext.Button({
 
 //学生列表主显panel 
 var studentPanel = new Ext.Panel( {
-	title : "<center><p><font size=3>学生管理</font></p></center>",
+	title : "<center><p><font size=3>Student Management</font></p></center>",
 	width : "768",
 	frame : true,
 	height : 510,
 	tbar : ['-', {
-		text : "添加",
+		text : "Add",
 		width:80,
 		handler : function() {						
 			addWindow.show();//添加学生信息弹窗
 			addPanel.form.reset();
-			addWindow.setTitle('添加学生信息');							
+			addWindow.setTitle('Add Student Information');							
 		}
 	},'-',{
 		xtype :"button",
 		width:80,
-		text:"删除",
+		text:"Delete",
 		handler:function(){
 			var wh =  studentGrid.getSelectionModel().getSelections();//通过多选框删除
 			var ids="";
 			if(wh.length<1){
-				Ext.Msg.alert('提示', '请选中至少一条数据');
+				Ext.Msg.alert('Notice', 'Please select at least one record!');
 				return;
 			}
 			for(var i=0;i<wh.length;i++){
@@ -440,12 +440,12 @@ var studentPanel = new Ext.Panel( {
 			if(ids!=""){
 				ids=ids.substring(0,ids.length-1);
 			}
-			Ext.Msg.confirm("操作确认","是否确认删除？",function(btn){
+			Ext.Msg.confirm("Confirm","Delete？",function(btn){
 				if (btn == 'yes'){
 					 Ext.Ajax.request({//删除action
 						url: '<%=request.getContextPath()%>/deleteStudents.action',
 						success: function(res){
-							Ext.Msg.alert('提示', res.responseText);
+							Ext.Msg.alert('Notice', res.responseText);
 							store.reload();//重新加载列表
 						},
 						failure: function(res){
@@ -458,7 +458,7 @@ var studentPanel = new Ext.Panel( {
 		}
 	} ,"->",{//搜索框
 		xtype :"label",
-		text:"学生名关键字:",
+		text:"Student Name Keywords:",
 		width:120
 	},query,"&nbsp",queryButton],
 	items:[{
@@ -471,13 +471,13 @@ var studentPanel = new Ext.Panel( {
 	bbar : new Ext.PagingToolbar( {
 		pageSize : 5,
 		displayInfo : true,
-		displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+		displayMsg : 'List {0} to {1} records，total {2} ',
 		store:store,
-		emptyMsg : "没有记录"
+		emptyMsg : "No record"
 	}),	
 	buttons :[
 	{
-		text:'保存',
+		text:'Save',
 		xtype:'button',
 		handler : function() {
 			var mr = store.getModifiedRecords(); // 获取所有更新过的记录
@@ -511,7 +511,7 @@ var studentPanel = new Ext.Panel( {
 						},
 						method : 'POST',
 						success: function(res){
-							Ext.Msg.alert('提示', res.responseText);
+							Ext.Msg.alert('Notice', res.responseText);
 							store.reload();
 							mr.length=0;			  											
 						},

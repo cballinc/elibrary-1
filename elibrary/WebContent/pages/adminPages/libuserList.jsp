@@ -6,16 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript">
 function imgDel(delId) {
-	Ext.Msg.confirm("确认", "您确定要删除吗？",
+	Ext.Msg.confirm("Confirm", "Are you sure？",
 		function(btn) {		    
 			if (btn == "yes") {		
-				Ext.Msg.alert("提示","删除成功");
+				Ext.Msg.alert("Notice","Completed");
 			}
 		}
 	);
 };
 var limit=1000;
-var store = new Ext.data.JsonStore({//数据源
+var store = new Ext.data.JsonStore({//Data Source
 	url : "<%=request.getContextPath()%>/listLibuser.action", 
 	root : "nodes",
 	totalProperty : "total",
@@ -23,7 +23,7 @@ var store = new Ext.data.JsonStore({//数据源
 });
 
 
-var sm=new Ext.grid.CheckboxSelectionModel();//全选/反选 
+var sm=new Ext.grid.CheckboxSelectionModel();//Select all/Intert selection 
 var cm = new Ext.grid.ColumnModel([
 	sm,
 	//{
@@ -36,7 +36,7 @@ var cm = new Ext.grid.ColumnModel([
 	//	sortable : true
 	//},
 	{
-		header : "真实姓名",
+		header : "Real Name",
 		dataIndex : "realname",
 		width : 80,
 		editor : new Ext.form.TextField({
@@ -44,12 +44,12 @@ var cm = new Ext.grid.ColumnModel([
 		}),
 		sortable : true
 	},{//用户名不得更改
-		header : "用户名",
+		header : "User Name",
 		dataIndex : "username",
 		width : 100,
 		sortable : true
 	},{
-		header : "联系电话",
+		header : "Tel",
 		dataIndex : "tel",
 		width : 80,
 		editor : new Ext.form.TextField({
@@ -57,7 +57,7 @@ var cm = new Ext.grid.ColumnModel([
 		}),
 		sortable : true
 	},{
-		header : "电子邮件",
+		header : "Email",
 		dataIndex : "email",
 		width : 100,
 		editor : new Ext.form.TextField({
@@ -80,47 +80,47 @@ var libuserGrid = new Ext.grid.EditorGridPanel({
 
 var usernameTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
-	fieldLabel : '用户名',
+	fieldLabel : 'User Name',
 	width:220,
 	anchor:'90%',
 	maxLength : 20,
 	name:"libuser.username",
-	maxLengthText : "最大长度为20",
+	maxLengthText : "Max Length is 20",
 	allowBlank: false,
-    blankText: "用户名不能为空"
+    blankText: "User Name cannot in blank!"
 });
 var userpwdTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
-	fieldLabel : '初始密码',
+	fieldLabel : 'Default Password',
 	width:220,
 	anchor:'90%',
 	maxLength : 15,
 	name:"libuser.userpwd",
-	maxLengthText : "最大长度为15",
+	maxLengthText : "Max length is 15",
 	allowBlank : false,
-    blankText : "请为用户设置初始密码"
+    blankText : "Please set up default password for user!"
 });
 var realnameTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
-	fieldLabel : '真实姓名',
+	fieldLabel : 'Real Name',
 	width:220,
 	anchor:'90%',
 	maxLength : 20,
 	name:"libuser.realname",
-	maxLengthText : "最大长度为20"
+	maxLengthText : "Maximun Length is 20"
 });
 var telTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
-	fieldLabel : '联系电话',
+	fieldLabel : 'Tel',
 	width:220,
 	anchor:'90%',
 	maxLength : 15,
 	name:"libuser.tel",
-	maxLengthText : "最大长度为15"
+	maxLengthText : "Maximum length is 15"
 });
 var emailTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
-	fieldLabel : '邮箱',
+	fieldLabel : 'Email',
 	width:220,
 	anchor:'90%',
 	name:"libuser.email",
@@ -128,7 +128,7 @@ var emailTextFeild=new Ext.form.TextField({
 });
 
 var closeButton=new Ext.Button({
-	text:'关闭',				
+	text:'Close',				
 	minWidth:80,
 	handler:function(){
 		addWindow.hide();
@@ -188,13 +188,13 @@ var addPanel = new Ext.form.FormPanel( {
 		items : emailTextFeild
 	}],
 	buttons:[{
-		text:'保存',
+		text:'Save',
 		handler:function(){
 			addPanel.getForm().submit({
-				waitTitle : '请稍候',  
-                waitMsg : '正在提交表单数据,请稍候...', 
+				waitTitle : 'Wait',  
+                waitMsg : 'Processing the form, please wait...', 
 				success : function(f, rep) {
-					Ext.MessageBox.alert("提示", rep.result.msg);
+					Ext.MessageBox.alert("Notice", rep.result.msg);
 					addWindow.hide();
 					store.reload();
 				}
@@ -244,11 +244,11 @@ store.on("beforeload", function(){
 });
 
 var queryLabel = new Ext.form.Label({
-	text:'类型名称：'
+	text:'Category Name：'
 });
 
 var queryButton = new Ext.Button({
-	text:'查询',
+	text:'Search',
 	width:'30',
 	handler:function(){
 		var queryValue = query.getValue();
@@ -260,27 +260,27 @@ var queryButton = new Ext.Button({
 
 //员工列表主显panel 
 var libuserPanel = new Ext.Panel( {
-	title : "<center><p><font size=3>员工管理</font></p></center>",
+	title : "<center><p><font size=3>Librarian Management</font></p></center>",
 	width : "768",
 	frame : true,
 	height : 510,
 	tbar : ['-', {
-		text : "添加",
+		text : "Add",
 		width:80,
 		handler : function() {						
 			addWindow.show();//添加员工账户弹窗
 			addPanel.form.reset();
-			addWindow.setTitle('添加员工账户');							
+			addWindow.setTitle('Add Librarian Info');							
 		}
 	},'-',{
 		xtype :"button",
 		width:80,
-		text:"删除",
+		text:"Delete",
 		handler:function(){
 			var wh =  libuserGrid.getSelectionModel().getSelections();//通过多选框删除
 			var ids="";
 			if(wh.length<1){
-				Ext.Msg.alert('提示', '请选中至少一条数据');
+				Ext.Msg.alert('Notice', 'Please select at lease one record!');
 				return;
 			}
 			for(var i=0;i<wh.length;i++){
@@ -291,13 +291,13 @@ var libuserPanel = new Ext.Panel( {
 				ids=ids.substring(0,ids.length-1);
 			}
             //alert(ids[0]+10);
-			Ext.Msg.confirm("操作确认","是否确认删除？",function(btn){
+			Ext.Msg.confirm("Confirm","Delete？",function(btn){
 
 				if (btn == 'yes'){
 					 Ext.Ajax.request({//删除action
 						url: '<%=request.getContextPath()%>/deleteLibuser.action',
 						success: function(res){
-							Ext.Msg.alert('提示', res.responseText);
+							Ext.Msg.alert('Notice', res.responseText);
 							store.reload();//重新加载列表
 						},
 						failure: function(res){
@@ -310,7 +310,7 @@ var libuserPanel = new Ext.Panel( {
 		}
 	} ,"->",{//搜索框
 		xtype :"label",
-		text:"类别名关键字:",
+		text:"Category Name Key Words:",
 		width:120
 	},query,"&nbsp",queryButton],
 	items:[{
@@ -323,13 +323,13 @@ var libuserPanel = new Ext.Panel( {
 	bbar : new Ext.PagingToolbar( {
 		pageSize : 15,
 		displayInfo : true,
-		displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+		displayMsg : 'List {0} to {1} records，total {2} ',
 		store:store,
-		emptyMsg : "没有记录"
+		emptyMsg : "No record"
 	}),	
 	buttons :[
 	{
-		text:'保存',
+		text:'Save',
 		xtype:'button',
 		handler : function() {
 			var mr = store.getModifiedRecords(); // 获取所有更新过的记录
@@ -379,7 +379,7 @@ var libuserPanel = new Ext.Panel( {
 						},
 						method : 'POST',
 						success: function(res){
-							Ext.Msg.alert('提示', res.responseText);
+							Ext.Msg.alert('Notice', res.responseText);
 							store.reload();
 							mr.length=0;			  											
 						},

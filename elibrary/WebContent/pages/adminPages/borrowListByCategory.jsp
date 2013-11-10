@@ -5,36 +5,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript">
-// 格式化日期
+// Format Date
 
-var limit = 15;//每页显示记录数
+var limit = 15;//Lines of record in one page
 var id = '<%=request.getParameter("categoryid")%>';
-var store = new Ext.data.JsonStore({//数据源
+var store = new Ext.data.JsonStore({//Data Source
 	url : "<%=request.getContextPath()%>/listBorrowListByCategory.action?thecategoryid="+id, 
 	root : "list",
 	fields:["categoryname","literaturename","totalnum","num"]
 });
 		
-//var sm=new Ext.grid.CheckboxSelectionModel();//全选/反选 
+//var sm=new Ext.grid.CheckboxSelectionModel();//Select All/Invert Selection 
 var cm = new Ext.grid.ColumnModel([
 	//sm,
 	{
-		header : "类别名",
+		header : "Category",
 		dataIndex : "categoryname",
 		width : 80,
 		sortable : true
 	},{
-		header : "名称",
+		header : "Name",
 		dataIndex : "literaturename",
 		width : 100,
 		sortable : true
 	},{
-		header : "已借数",
+		header : "BorrowNum",
 		dataIndex : "num",									
 		width : 50,
 		sortable : true
 	},{
-		header : "总数",
+		header : "Sum",
 		dataIndex : "totalnum",
 		width : 50,
 		sortable : true
@@ -54,9 +54,9 @@ var borrowListByCategoryGrid = new Ext.grid.GridPanel({
 
 
 
-//列表主显panel 
+//Table main panel 
 var borrowListByCategoryPanel = new Ext.Panel( {
-	title : "<center><p><font size=3>按图书名查询借阅列表</font></p></center>",
+	title : "<center><p><font size=3>Borrorw Info List by Category</font></p></center>",
 	width : "768",
 	frame : true,
 	height : 510,
@@ -66,23 +66,21 @@ var borrowListByCategoryPanel = new Ext.Panel( {
 		border : false,
 		items : borrowListByCategoryGrid
 	}],
-	//右下角显示分页信息与保存按钮 
 	bbar : new Ext.PagingToolbar( {
 		pageSize : 5,
 		displayInfo : true,
-		displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+		displayMsg : 'List {0} to {1} records，total {2} ',
 		store:store,
-		emptyMsg : "没有记录"
+		emptyMsg : "No record"
 	})
 });
 
 
 Ext.onReady(function() {
-	Ext.QuickTips.init();//表单错误提示
+	Ext.QuickTips.init();
 	Ext.form.Field.prototype.msgTarget = 'under';
 	borrowListByCategoryPanel.render("borrowListByCategoryPanel");
-	store.load({params : {key:'',start:0,limit:15}});//传分页控制参数 
-});
+	store.load({params : {key:'',start:0,limit:15}});});
 	
 </script>
 </head>

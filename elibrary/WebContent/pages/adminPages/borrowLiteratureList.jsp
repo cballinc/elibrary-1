@@ -17,22 +17,22 @@ var store = new Ext.data.JsonStore({//数据源
 var cm = new Ext.grid.ColumnModel([
 	//sm,
 	{
-		header : "类别名",
+		header : "Category",
 		dataIndex : "categoryname",
 		width : 80,
 		sortable : true
 	},{
-		header : "名称",
+		header : "Name",
 		dataIndex : "literaturename",
 		width : 100,
 		sortable : true
 	},{
-		header : "已借数",
+		header : "BorrowNum",
 		dataIndex : "num",									
 		width : 50,
 		sortable : true
 	},{
-		header : "总数",
+		header : "Sum",
 		dataIndex : "totalnum",
 		width : 50,
 		sortable : true
@@ -60,7 +60,7 @@ var borrowLiteratureListGrid = new Ext.grid.GridPanel({
 
 //列表主显panel 
 var borrowLiteratureListPanel = new Ext.Panel( {
-	title : "<center><p><font size=3>书目借阅信息列表</font></p></center>",
+	title : "<center><p><font size=3>Book Borrrow Info</font></p></center>",
 	width : "768",
 	frame : true,
 	height : 510,
@@ -74,9 +74,9 @@ var borrowLiteratureListPanel = new Ext.Panel( {
 	bbar : new Ext.PagingToolbar( {
 		pageSize : 5,
 		displayInfo : true,
-		displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+		displayMsg : 'List {0} to {1} records，total {2} ',
 		store:store,
-		emptyMsg : "没有记录"
+		emptyMsg : "No record"
 	})
 });
 

@@ -6,15 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript">
 function imgDel(delId) {
-	Ext.Msg.confirm("确认", "您确定要删除吗？",
+	Ext.Msg.confirm("Confirm", "Delete?",
 		function(btn) {		    
 			if (btn == "yes") {		
-				Ext.Msg.alert("提示","删除成功");
+				Ext.Msg.alert("Notice","Detete successfully.");
 			}
 		}
 	);
 };
-// 格式化日期
+// Format date
 function dateRender(value){
 	if(value!="null"&&value){
 		if (typeof value == "string") { 
@@ -27,74 +27,74 @@ function dateRender(value){
 	}
 };
 
-var limit = 15;//每页显示记录数
+var limit = 15;//Numbers of records in one page
 
-var store = new Ext.data.JsonStore({//数据源
+var store = new Ext.data.JsonStore({//Datasource
 	url : "<%=request.getContextPath()%>/listBorrowList.action", 
 	root : "list",
 	totalProperty : "total",
 	fields:["categoryname","literaturename","totalnum","num","returned","returntime","borrowtime","expectedreturntime","sname","snumber","borrowid","literatureid"]
 });
 		
-//var sm=new Ext.grid.CheckboxSelectionModel();//全选/反选 
+//var sm=new Ext.grid.CheckboxSelectionModel();//Select All/Invert Selection 
 var cm = new Ext.grid.ColumnModel([
 	//sm,
 	{
-		header : "类别名",
+		header : "Category",
 		dataIndex : "categoryname",
 		width : 80,
 		sortable : true
 	},{
-		header : "名称",
+		header : "Name",
 		dataIndex : "literaturename",
 		width : 100,
 		sortable : true
 	},{
-		header : "学生名",
+		header : "Student",
 		dataIndex : "sname",
 		width : 80
 	},{
-		header :"学号",
+		header :"SID",
 		dataIndex : "snumber",
 		width : 80,
 		sortable : true
 	},{
-		header : "借阅数",
+		header : "BorrowNum",
 		dataIndex : "num",									
 		width : 50,
 		renderer : dateRender,
 		sortable : true
 	},{
-		header : "总数",
+		header : "Sum",
 		dataIndex : "totalnum",
 		width : 50,
 		sortable : true
 	},{
-		header : "借阅时间",
+		header : "Time",
 		dataIndex : "borrowtime",
 		width : 90,
 		renderer : dateRender,
 		sortable : true
 	},{
-		header : "应还时间",
+		header : "Return Time",
 		dataIndex : "expectedreturntime",
 		width : 90,
 		renderer : dateRender,
 		sortable : true
 	},{
-		header : "已还",
+		header : "Returned",
 		dataIndex : "returned",
 		width : 50,
 		renderer:function(value){
           if(value==0){
-            return "否";
+            return "No";
           }else{
-            return "是";
+            return "Yes";
           }
 	    },
 		sortable : true
 	},{
-		header : "归还时间",
+		header : "ReturnTime",
 		dataIndex : "returntime",
 		width : 90,
 		renderer : dateRender,
@@ -143,11 +143,11 @@ store.on("beforeload", function(){
 });
 
 var queryLabel = new Ext.form.Label({
-	text:'类型名称：'
+	text:'Category Name：'
 });
 
 var queryButton = new Ext.Button({
-	text:'查询',
+	text:'Search',
 	width:'30',
 	handler:function(){
 		var queryValue = query.getValue();
@@ -157,50 +157,16 @@ var queryButton = new Ext.Button({
 	}
 });
 
-//列表主显panel 
+//Table Main Panel 
 var borrowListPanel = new Ext.Panel( {
-	title : "<center><p><font size=3>借阅列表</font></p></center>",
+	title : "<center><p><font size=3>Borrow Info List</font></p></center>",
 	width : "768",
 	frame : true,
 	height : 510,
 	tbar : [
-	//'-',{
-	//	xtype :"button",
-	//	width:80,
-	///	text:"删除",
-	//	handler:function(){
-	//		var wh =  borrowListGrid.getSelectionModel().getSelections();//通过多选框删除
-	//		var ids="";
-	//		if(wh.length<1){
-	//			Ext.Msg.alert('提示', '请选中至少一条数据');
-	//			return;
-	//		}
-	//		for(var i=0;i<wh.length;i++){
-	//			ids+=wh[i].get("borrowid")+",";// 获取所选borrowid
-	//		}
-	//		if(ids!=""){
-	//			ids=ids.substring(0,ids.length-1);
-	//		}
-	//		Ext.Msg.confirm("操作确认","是否确认删除？",function(btn){
-	//			if (btn == 'yes'){
-	//				 Ext.Ajax.request({//删除action
-	//					url: '<%=request.getContextPath()%>/deleteBorrowInfo.action',
-	//					success: function(res){
-	//						Ext.Msg.alert('提示', res.responseText);
-	//						store.reload();//重新加载列表
-	//					},
-	//					failure: function(res){
-	//						alert(res);
-	//					},
-	//					params: {idsToDelete: ids }//传给deleteBorrowInfo.action的borrowid
-	//				});
-	//			}
-	//		});
-	//	}
-	//} ,
-	"->",{//搜索框
+	"->",{//Query Box
 		xtype :"label",
-		text:"按学号查询:",
+		text:"Search by Student ID:",
 		width:120
 	},query,"&nbsp",queryButton],
 	items:[{
@@ -209,22 +175,22 @@ var borrowListPanel = new Ext.Panel( {
 		border : false,
 		items : borrowListGrid
 	}],
-	//右下角显示分页信息与保存按钮 
+	 
 	bbar : new Ext.PagingToolbar( {
 		pageSize : 5,
 		displayInfo : true,
-		displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+		displayMsg : 'List {0} to {1} records，total {2} ',
 		store:store,
-		emptyMsg : "没有记录"
+		emptyMsg : "No records"
 	})
 });
 
 
 Ext.onReady(function() {
-	Ext.QuickTips.init();//表单错误提示
+	Ext.QuickTips.init();
 	Ext.form.Field.prototype.msgTarget = 'under';
 	borrowListPanel.render("borrowListPanel");
-	store.load({params : {key:'',start:0,limit:15}});//传分页控制参数 
+	store.load({params : {key:'',start:0,limit:15}});//Page parameters 
 });
 	
 </script>

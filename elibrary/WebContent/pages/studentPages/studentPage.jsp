@@ -36,12 +36,12 @@ var store = new Ext.data.JsonStore({//数据源
 var limit=100;
 var cm = new Ext.grid.ColumnModel([
 	{
-		header : "名称",
+		header : "Name",
 		dataIndex : "literaturename",
 		width : 130,
 		sortable : true
 	},{
-		header : "类别",
+		header : "Category",
 		dataIndex : "categoryid",
 		width : 80,
 		sortable : true,
@@ -55,27 +55,27 @@ var cm = new Ext.grid.ColumnModel([
         }
 	    }
 	},{
-		header : "索引号",
+		header : "Index",
 		dataIndex : "lindex",
 		width : 50,
 		sortable : true
 	},{
-		header : "作者",
+		header : "Author",
 		dataIndex : "author",
 		width : 80,
 		sortable : true
 	},{
-		header : "出版社",
+		header : "Press",
 		dataIndex : "press",
 		width : 160,
 		sortable : true
 	},{
-		header : "总数",
+		header : "TotalNum",
 		dataIndex : "num",
 		width : 40,
 		sortable : true
 	},{
-		header : "已借出",
+		header : "BorrowedNum",
 		dataIndex : "outnum",
 		width : 50,
 		sortable : true
@@ -116,11 +116,11 @@ store.on("beforeload", function(){
 	store.baseParams.searchAddition = query.getRawValue();
 });
 var queryLabel = new Ext.form.Label({
-	text:'类型名称：'
+	text:'Category：'
 });
 
 var queryButton = new Ext.Button({
-	text:'查询',
+	text:'Search',
 	width:'30',
 	handler:function(){
 		var queryValue = query.getValue();
@@ -132,14 +132,14 @@ var queryButton = new Ext.Button({
 
 //资料列表主显panel 
 var literaturePanel = new Ext.Panel( {
-	title : "<center><p><font size=3>图书查询</font></p></center>",
+	title : "<center><p><font size=3>Book Search</font></p></center>",
 	width : 600,
 	frame : true,
 	headerAsText:false,
 	height : 300,
 	tbar : ["->",{//搜索框
 		xtype :"label",
-		text:"名称关键字:",
+		text:"Book Name Keywords:",
 		width:120
 	},query,"&nbsp",queryButton],
 	items:[{
@@ -152,9 +152,9 @@ var literaturePanel = new Ext.Panel( {
 	bbar : new Ext.PagingToolbar( {
 		pageSize : 15,
 		displayInfo : true,
-		displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+		displayMsg : 'List {0} to {1} records，total {2}',
 		store:store,
-		emptyMsg : "没有记录"
+		emptyMsg : "No record"
 	})
 });
 //学生登录----------------------------------------------------------------------
@@ -168,18 +168,18 @@ function validationBlank( value ){
     };
 function login() {
       if(validationBlank(document.loginform.username.value)){//验证用户名是否存在空格
-        alert("提示: 用户名中不可有空格！");
+        alert("Notice: there should not be blank space！");
         return;
       }
       if(validationBlank(document.loginform.password.value)){//验证用户名是否存在空格
-        alert("提示: 密码输入错误！");
+        alert("Notice: password is not correct！");
         return;
       }     
       if ("" == document.loginform.username.value) {
-        alert("用户名不能为空，请输入用户名！");
+        alert("The username cannot be blank！");
         document.loginform.username.focus();
       } else if ("" == document.loginform.password.value){
-        alert("密码不能为空，请输入密码！");
+        alert("Please type in password！");
         document.loginform.password.focus();
       } else {
     	  $.ajax({
@@ -194,10 +194,10 @@ function login() {
  	        	var result = eval( "(" + data + ")" );
  	        	//alert(result.error)
  	        	if ('false' == result.error) {
-                   Ext.Msg.alert("提示","登陆成功!正在为您跳转页面。。。");
+                   Ext.Msg.alert("Notice","Login Succeed!Jumping page..");
  	               window.location = "<%=request.getContextPath()%>/pages/studentPages/loginedStudentPage.jsp";
             } else {
-              Ext.Msg.alert("提示","学号或密码错误！");
+              Ext.Msg.alert("Notice","SID or password is not correct！");
             }
  	        }
  	      }, "json");
@@ -236,19 +236,20 @@ Ext.onReady(function() {
 
         <form id="loginform" name="loginform"  method="post" onkeydown="if(event.keyCode==13) { login(); }">
 
-          <div style="width:168px; float:left">
+          <div style="width:200px; float:left">
 
-            <div style="font-family:微软雅黑; color:white">用户名：<input type="text" id="username" name="username" style="height:18px; width:108px; line-height:18px" /></div>
-
-            <div style="font-family:微软雅黑; color:white">密　码：<input type="password" id="password" name="password" style="height:18px; width:108px; line-height:18px" /></div>
-
+            <div style="color:white">
+            User Name：<input type="text" id="username" name="username" style="height:18px; width:108px; line-height:18px" />
+            &nbsp;
+            Password：<input type="password" id="password" name="password" style="height:18px; width:108px; line-height:18px" />
+            </div>
           </div>      
 
           <div style="width:72px; float:left">
 
             <a href="javascript:void(0)"></a><br/>
 
-            <input id="btnLogin" type="button" name="btn" style="height:26px; width:60px; font-family:微软雅黑; line-height:14px" value="登 录" onclick="login()" />
+            <input id="btnLogin" type="button" name="btn" style="height:26px; width:60px; line-height:14px" value="Login" onclick="login()" />
 
           </div>
 
@@ -262,7 +263,7 @@ Ext.onReady(function() {
 			
 				<li id="home"><span class="header"></span>
 					<div class="inner">
-						<h2>欢迎使用AKUN图书馆借阅平台</h2>
+						<h2>Welcome to use Library Management System</h2>
 						<p><em>————————————————————————————————————————————————————————</em></p>
 						<img src="images/templatemo_image_01.jpg" alt="Image 01" class="image_fl" />
 						<div class="col_half float_r">
@@ -281,7 +282,7 @@ Ext.onReady(function() {
 			
 				<li id="about"><span class="header"></span>
 					<div class="inner">
-					    <h2>图书查询</h2>
+					    <h2>Book Search</h2>
 						<div id="literatureListPanel"></div>
 						
 					</div>
@@ -290,13 +291,13 @@ Ext.onReady(function() {
 				 <li id="social"><span class="header"></span>
 					<div class="inner">
 						<div id="studentValidate"></div>
-						<h2>未登录</h2>
+						<h2>Please Login</h2>
 					</div>
 				</li> 
 			
 				<li id="portfolio"><span class="header"></span>
 					<div class="inner">
-						<h2>平台介绍</h2>
+						<h2>Platform Introduction</h2>
 						<!-- 
 						<ul id="gallery">
 							<li><a href="images/portfolio/01-l.jpg" rel="lightbox[portfolio]" title="Curabitur facilisis auctor risus, eget lacinia leo feugiat ac."><img src="images/portfolio/01.jpg" alt="Image 01" /></a></li>
@@ -310,38 +311,14 @@ Ext.onReady(function() {
 					</div>
 				</li>
 				
-				<li id="contact"><span class="header"></span>
-					<div class="inner">
-						<h2>制作人</h2>
-						<p>本平台由个人于2012.2-2012.5，历时三个月完成，基本流程和主要功能都已实现，虽做了大量输入验证，但由于
-						时间和精力限制，还有不完善的地方。如发现有bug存在，欢迎与我联系并指正。谢谢您的关注！</p>
-						<h4>杨宗昆</h4> &nbsp;&nbsp;&nbsp;<h4>指导老师：李浩</h4>
-						<div id="contact_form"  class="col_w280 float_l">
-							<img src="images/portfolio/06.jpg"></img>
-						</div>
-                        
-                        <div class="col_w280 float_r">
-                            <h4><strong>联系信息</strong></h4>
-                            <h4><strong>云南大学软件学院</strong></h4>
-                            <br/>
-                            <strong>QQ:</strong> 371505199<br />   <br/>       
-                            <strong>Email:</strong> <a href="mailto:zk.yang1012@gmail.com">zk.yang1012@gmail.com</a>
-               			</div>
-						
-					</div>
-				</li>
-			
 			</ul>
 			
 		</div> <!-- END of content -->
 	</div> <!-- END of templatemo_main -->
 	<div id="entrances">
-	 <a href="<%=request.getContextPath()%>/pages/userPages/userPage.jsp">员工入口</a>&nbsp;|&nbsp;
-     <a href="<%=request.getContextPath()%>/pages/adminPages/login.jsp">管理员入口</a>
+	 <a href="<%=request.getContextPath()%>/pages/userPages/userPage.jsp">Librarian Entrance</a>&nbsp;|&nbsp;
+     <a href="<%=request.getContextPath()%>/pages/adminPages/login.jsp">System Administrator Entrance</a>
 	</div>
-    <div id="templatemo_footer">
-    <span>Copyright © 2012 - 2013 Zongkun Yang All Rights Reserved.</span><br /><span>云南大学 杨宗昆 版权所有</span> 
-    </div>
 </div> 
 
 </body>

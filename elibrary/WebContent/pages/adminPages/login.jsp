@@ -4,7 +4,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/main.css" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>AKUN后台管理系统</title>
+	<title>Library Management System</title>
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/jquery.ui.css" />
 	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.js"></script>
   <script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.ui.js"></script>
@@ -12,11 +12,11 @@
 	  function login() {
       var patt = /^[A-Za-z0-9_]{4,16}$/;
       if(false == patt.test($("#username").val())) {
-        $("#erruname").text("仅能为4-16位的字母、数字及下划线。");
+        $("#erruname").text("Only character, number, and '_' length of 4-16 allowed");
         $("#errpwd").text("");
       } else if(false == patt.test($("#password").val())) {
         $("#erruname").text("");
-        $("#errpwd").text("仅能为4-16位的字母、数字及下划线。");
+        $("#errpwd").text("Only character, number, and '_' length of 4-16 allowed");
       } else {
         $("#erruname").text("");
         $("#errpwd").text("");
@@ -31,7 +31,6 @@
             if ("success\r\n" == data) {
                 window.location = "<%=request.getContextPath()%>/pages/adminPages/center.jsp";
             } else {
-              //alert("用户名或密码输入错误！");
               alert(data);
             }
           }
@@ -76,51 +75,36 @@
   <div class="header_bg">
     <div id="header">
 	    <div id="hd_logo"><span></span></div>
-	    <div id="hd_banner"><span>AKUN图书借阅平台</span></div>
+	    <div id="hd_banner"><span>Library Management System</span></div>
 	  </div>
   </div>
   <div class="navi_bg">
 	  <div id="navi">
 	    <ul>
 	      <li>
-	        <a href="<%=request.getContextPath()%>/pages/adminPages/center.jsp">首页</a>
+	        <a href="<%=request.getContextPath()%>/pages/adminPages/center.jsp">Home Page</a>
 	      </li>
 	      <li>
-	        <a href="javascript:void(0)">平台介绍</a>
+	        <a href="javascript:void(0)">Platform Intoduction</a>
 	        <ul class="hide">
-            <li><a href="javascript:void(0)">简介</a></li>
-            <li><a href="javascript:void(0)">操作指南</a></li>
-            <li><a href="javascript:void(0)">联系方式</a></li>
-            <li><a href="javascript:void(0)">管理办法</a></li>
+            <li><a href="javascript:void(0)">Introduction</a></li>
+            <li><a href="javascript:void(0)">Use Guide</a></li>
+            <li><a href="javascript:void(0)">Contact</a></li>
+            <li><a href="javascript:void(0)">Management Method</a></li>
           </ul>
 	      </li>
-	  <!--<li>
-	        <a href="javascript:void(0)">新闻动态</a>
-	      </li>
-	      <li>
-	        <a href="javascript:void(0)">政策法规</a>
-	      </li>
-	      <li>
-	        <a href="javascript:void(0)">软件企业</a>
-	      </li>
-	      <li>
-	        <a href="javascript:void(0)">投诉及意见</a>
-	      </li>
-	      <li>
-	        <a href="javascript:void(0)">用户操作</a>
-	      </li>-->          
 	    </ul>
 	  </div>
 	</div>
 	<div class="container_bg">
 	  <div id="container" style="padding:24px 0px 24px 0px">
 	    <div style="width:640px; height:360px; margin:0px auto">
-	      <h2>管理员登录</h2>
+	      <h2>System administrater login</h2>
 	      <div style="position:relative; width:600px; height:240px; border:1px solid #DDDDDD;  margin:12px auto">
 	        <div style="position:absolute; top:60px; left:100px">
 	        <form id="loginform" name="loginform"  method="post" onkeydown="if(event.keyCode==13){login();}">
-	          <span>用户名：</span><input id="username" type="text" /> <span id="erruname" style="color:red"></span><br /><br />
-	          <span>密　码：</span><input id="password" type="password" /> <span id="errpwd" style="color:red"></span>
+	          <span>User Name：</span><input id="username" type="text" /> <span id="erruname" style="color:red"></span><br /><br />
+	          <span>Password：</span><input id="password" type="password" /> <span id="errpwd" style="color:red"></span>
 	        </form>
 	        </div>
 	        <div style="position:absolute; bottom:40px; right:60px">
@@ -132,26 +116,26 @@
     </div>
   </div>
 
-  <div class="footer_bg">
+ <div class="footer_bg">
     <div id="footer">
       <div style="width:960px">
         <div id="f_police">
           <img alt="police" src="<%=request.getContextPath()%>/images/book.jpg"></img>
         </div>
         <div id="f_copyright_cn">
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;联系电话：13608817451</span>　<br/><br/>　
-          <span>电子邮件：zk.yang1012@gmail.com</span><br />
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;Tel: 480-321-6877</span>　<br/><br/>　
+          <span>Email：zyang64@asu.edu</span><br/>
         </div>
         <div id="f_contentus">
-          <span>&ensp;通讯地址：昆明市五华区翠湖北路2号云南大学东二院1幢512室</span><br /><br />
-          <span>&ensp;<a href="<%=request.getContextPath()%>/pages/studentPages/studentPage.jsp"><font color="white">前台入口</font></a>&nbsp;|&nbsp;
-     <a href="<%=request.getContextPath()%>/pages/userPages/userPage.jsp">员工入口</a></span>
+          <span>&ensp;Arizona State University</span><br /><br />
+          <span>&ensp;<a href="<%=request.getContextPath()%>/pages/studentPages/studentPage.jsp"><font color="white">Front Page Entrance</font></a>&nbsp;|&nbsp;
+     <a href="<%=request.getContextPath()%>/pages/userPages/userPage.jsp">Librarian Entrance</a></span>
         </div>
         <div style="clear:both"></div>
       </div>
-      <div id="f_copyright_en">
-        <span>Copyright © 2012 - 2013 Zongkun Yang All Rights Reserved.</span><br /><span>云南大学 杨宗昆 版权所有</span>     
-      </div>
+      <!-- <div id="f_copyright_en">
+        <span>Copyright © 2012 - 2013 Zongkun Yang All Rights Reserved.</span><br /><span>ASU Zongkun Yang</span>     
+      </div> -->
     </div>    
   </div>	
 </body>

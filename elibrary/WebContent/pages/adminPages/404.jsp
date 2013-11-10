@@ -8,7 +8,7 @@
 <body>
   <div style="position:relative; width:776px; height:480px; background:transparent url('<%=request.getContextPath()%>/images/main_welcome_bg.jpg') no-repeat top center">
     <div style="position:absolute; left:80px; top:60px; font-size:72px; font-weight:blod; color:#006699">404</div>
-    <div style="position:absolute; left:160px; top:180px; font-size:28px; color:#006699">您请求的页面不存在或页面加载出错！</div>
+    <div style="position:absolute; left:160px; top:180px; font-size:28px; color:#006699">Not found the page you request...</div>
     <div style="clear:both"></div>
   </div>
 </body>

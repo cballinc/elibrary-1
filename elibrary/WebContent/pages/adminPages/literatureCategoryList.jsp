@@ -6,10 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript">
 function imgDel(delId) {
-	Ext.Msg.confirm("确认", "您确定要删除吗？",
+	Ext.Msg.confirm("Confirm", "Are you sure？",
 		function(btn) {		    
 			if (btn == "yes") {		
-				Ext.Msg.alert("提示","删除成功");
+				Ext.Msg.alert("Notice","Completed!");
 			}
 		}
 	);
@@ -37,7 +37,7 @@ var cm = new Ext.grid.ColumnModel([
 	//	sortable : true
 	//},
 	{
-		header : "索引号",
+		header : "Index",
 		dataIndex : "cindex",
 		width : 80,
 		editor : new Ext.form.TextField({
@@ -45,7 +45,7 @@ var cm = new Ext.grid.ColumnModel([
 		}),
 		sortable : true
 	},{
-		header : "类别名",
+		header : "Category",
 		dataIndex : "categoryname",
 		width : 100,
 		editor : new Ext.form.TextField({
@@ -69,26 +69,26 @@ var categoryGrid = new Ext.grid.EditorGridPanel({
 var categorynameTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
 	//name: 'userInfo.companyInfomation.address', 
-	fieldLabel : '类别名',
+	fieldLabel : 'Caregory Name',
 	width:220,
 	anchor:'90%',
 	maxLength : 50,
 	name:"category.categoryname",
-	maxLengthText : "最大长度为20"
+	maxLengthText : "Maximum length is 20"
 });
 var indexTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',
 	//name: 'userInfo.companyInfomation.address', 
-	fieldLabel : '索引号',
+	fieldLabel : 'Index',
 	width:220,
 	anchor:'90%',
 	maxLength : 10,
 	name:"category.cindex",
-	maxLengthText : "最大长度为10"
+	maxLengthText : "Maximum length is 10"
 });
 
 var closeButton=new Ext.Button({
-	text:'关闭',				
+	text:'Close',				
 	minWidth:80,
 	handler:function(){
 		addWindow.hide();
@@ -127,13 +127,13 @@ var addPanel = new Ext.form.FormPanel( {
 		items : indexTextFeild
 	}],
 	buttons:[{
-		text:'保存',
+		text:'Save',
 		handler:function(){
 			addPanel.getForm().submit({
-				waitTitle : '请稍候',  
-                waitMsg : '正在提交表单数据,请稍候...', 
+				waitTitle : 'Wait',  
+                waitMsg : 'Processing the form,please wait...', 
 				success : function(f, rep) {
-					Ext.MessageBox.alert("提示", rep.result.msg);
+					Ext.MessageBox.alert("Notice", rep.result.msg);
 					addWindow.hide();
 					store.reload();
 				}
@@ -183,11 +183,11 @@ store.on("beforeload", function(){
 });
 
 var queryLabel = new Ext.form.Label({
-	text:'类型名称：'
+	text:'Category Name：'
 });
 
 var queryButton = new Ext.Button({
-	text:'查询',
+	text:'Search',
 	width:'30',
 	handler:function(){
 		var queryValue = query.getValue();
@@ -199,27 +199,27 @@ var queryButton = new Ext.Button({
 
 //类别列表主显panel 
 var categoryPanel = new Ext.Panel( {
-	title : "<center><p><font size=3>大类管理</font></p></center>",
+	title : "<center><p><font size=3>Category Management</font></p></center>",
 	width : "768",
 	frame : true,
 	height : 510,
 	tbar : ['-', {
-		text : "添加",
+		text : "Add",
 		width:80,
 		handler : function() {						
 			addWindow.show();//添加图书大类弹窗
 			addPanel.form.reset();
-			addWindow.setTitle('添加图书大类');							
+			addWindow.setTitle('Add Category');							
 		}
 	},'-',{
 		xtype :"button",
 		width:80,
-		text:"删除",
+		text:"Delete",
 		handler:function(){
 			var wh =  categoryGrid.getSelectionModel().getSelections();//通过多选框删除
 			var ids="";
 			if(wh.length<1){
-				Ext.Msg.alert('提示', '请选中至少一条数据');
+				Ext.Msg.alert('Notice', 'Please select at least one record!');
 				return;
 			}
 			for(var i=0;i<wh.length;i++){
@@ -230,13 +230,13 @@ var categoryPanel = new Ext.Panel( {
 				ids=ids.substring(0,ids.length-1);
 			}
             //alert(ids[0]+10);
-			Ext.Msg.confirm("操作确认","是否确认删除？",function(btn){
+			Ext.Msg.confirm("Confirm","Delete？",function(btn){
 
 				if (btn == 'yes'){
 					 Ext.Ajax.request({//删除action
 						url: '<%=request.getContextPath()%>/deleteCategory.action',
 						success: function(res){
-							Ext.Msg.alert('提示', res.responseText);
+							Ext.Msg.alert('Notice', res.responseText);
 							store.reload();//重新加载列表
 						},
 						failure: function(res){
@@ -249,7 +249,7 @@ var categoryPanel = new Ext.Panel( {
 		}
 	} ,"->",{//搜索框
 		xtype :"label",
-		text:"类别名关键字:",
+		text:"Category Name Key Words:",
 		width:120
 	},query,"&nbsp",queryButton],
 	items:[{
@@ -262,13 +262,13 @@ var categoryPanel = new Ext.Panel( {
 	bbar : new Ext.PagingToolbar( {
 		pageSize : 15,
 		displayInfo : true,
-		displayMsg : '显示第 {0} 条到 {1} 条记录，一共 {2} 条',
+		displayMsg : 'List {0} to {1} records，total {2} ',
 		store:store,
-		emptyMsg : "没有记录"
+		emptyMsg : "No records"
 	}),	
 	buttons :[
 	{
-		text:'保存',
+		text:'Save',
 		xtype:'button',
 		handler : function() {
 			var mr = store.getModifiedRecords(); // 获取所有更新过的记录
@@ -318,7 +318,7 @@ var categoryPanel = new Ext.Panel( {
 						},
 						method : 'POST',
 						success: function(res){
-							Ext.Msg.alert('提示', res.responseText);
+							Ext.Msg.alert('Notice', res.responseText);
 							store.reload();
 							mr.length=0;			  											
 						},

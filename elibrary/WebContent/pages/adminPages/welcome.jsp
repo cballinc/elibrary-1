@@ -3,12 +3,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>欢迎使用</title>
+<title>Welcome</title>
 </head>
 <body>
   <div style="position:relative; width:776px; height:480px; background:transparent url('<%=request.getContextPath()%>/images/main_welcome_bg.jpg') no-repeat top center">
-    <div style="position:absolute; left:60px; top:120px; font-size:28px; color:#006699">欢迎使用</div>
-    <div style="position:absolute; left:90px; top:180px; font-size:28px; color:#006699">AKUN图书馆借阅平台后台管理系统</div>
+    <div style="position:absolute; left:60px; top:120px; font-size:28px; color:#006699">Welcome to use</div>
+    <div style="position:absolute; left:90px; top:180px; font-size:28px; color:#006699">Library Management System</div>
     <div style="clear:both"></div>
   </div>
 </body>
