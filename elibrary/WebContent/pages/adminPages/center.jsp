@@ -5,7 +5,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/main.css" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>AKUN后台管理系统</title>
+  <title>Library Management System</title>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/jquery.ui.css" />
   <script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.js"></script>
   <script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.ui.js"></script>
@@ -15,10 +15,10 @@
   <script type="text/javascript" src="<%=request.getContextPath()%>/ext/ext-all.js"></script>
   <script type="text/javascript" src="<%=request.getContextPath()%>/ext/src/locale/ext-lang-zh_CN.js"></script>
   <script type="text/javascript">
-	<%--   <% if (session.getAttribute("userInfo") == null) { %>
-	     alert("此页面只针对平台用户开放，请登录后重试！");
+	 <%-- <% if (session.getAttribute("userInfo") == null) { %>
+	     alert("Please login first！");
 	     window.location = "<%=request.getContextPath()%>/pages/adminPages/login.jsp";
-	  <% } %> --%>
+	  <% } %>  --%>
 	  function loadpage(href) {
 		  $("#content_page").load(href, function(response, status, xhr) {
 	        if (status == "error") {
@@ -66,18 +66,18 @@
         selectOnFocus : true,
         initComponent : function(){
                 var themes = [
-                                ['默认', 'xtheme-gray.css'],
-                                ['黑色', 'xtheme-black.css'],
-                                ['深灰', 'xtheme-darkgray.css'],
-                                ['蓝色', 'ext-all.css'],
-                                ['绿色', 'xtheme-green.css'],
-                                ['橄榄', 'xtheme-olive.css'],
-                                ['粉色', 'xtheme-pink.css'],
-                                ['紫色', 'xtheme-purple.css'],
-                                ['暗蓝', 'xtheme-slate.css'],
-                                ['靛青', 'xtheme-indigo.css'],
+                                ['Default', 'xtheme-gray.css'],
+                                ['Black', 'xtheme-black.css'],
+                                ['Grey', 'xtheme-darkgray.css'],
+                                ['Blue', 'ext-all.css'],
+                                ['Green', 'xtheme-green.css'],
+                                ['Olive', 'xtheme-olive.css'],
+                                ['Pink', 'xtheme-pink.css'],
+                                ['Purple', 'xtheme-purple.css'],
+                                ['Dark Blue', 'xtheme-slate.css'],
+                                ['Indigo Blue', 'xtheme-indigo.css'],
                                 ['Slic', 'xtheme-slickness.css'],
-                                ['深夜', 'xtheme-midnight.css']
+                                ['Dark', 'xtheme-midnight.css']
                 ];
                 this.store = new Ext.data.SimpleStore({
                         fields : ['theme', 'css'],
@@ -119,7 +119,7 @@ Ext.onReady(function(){
  
         //实例化一个可以改变风格样式的组件
         var pan = new Ext.Panel({
-                title:'更换主题',
+                title:'Change Theme',
                 items: themeList,
                 headerAsText:false,
                 header:false
@@ -134,10 +134,10 @@ Ext.onReady(function(){
   <div class="header_bg">
     <div id="header">
       <div id="hd_logo"><span></span></div>
-      <div id="hd_banner"><span>AKUN图书馆借阅服务平台</span></div>
+      <div id="hd_banner"><span>Library Management System</span></div>
       <div style="position:absolute; bottom:2px; right:8px">
         <% Libuser userInfo = new Libuser(); if(null != session.getAttribute("userInfo")) { userInfo = (Libuser) session.getAttribute("userInfo"); } %>
-        <span style="color:white">欢迎，系统管理员：<%=userInfo.getUsername()%>！</span><a style="color:lightblue" href="<%=request.getContextPath()%>/logout.action">注销</a>
+        <span style="color:white">Welcome, system admin：<%=userInfo.getUsername()%>！</span><a style="color:lightblue" href="<%=request.getContextPath()%>/logout.action">Log out</a>
       </div>
     </div>
   </div>
@@ -145,15 +145,15 @@ Ext.onReady(function(){
     <div id="navi">
       <ul>
         <li>
-          <a href="<%=request.getContextPath()%>/pages/adminPages/center.jsp">首页</a>
+          <a href="<%=request.getContextPath()%>/pages/adminPages/center.jsp">Home</a>
         </li>
         <li>
-          <a href="javascript:void(0)">平台介绍</a>
+          <a href="javascript:void(0)">Platform Intoduction</a>
           <ul class="hide">
-            <li><a href="javascript:void(0)">简介</a></li>
-            <li><a href="javascript:void(0)">操作指南</a></li>
-            <li><a href="javascript:void(0)">联系方式</a></li>
-            <li><a href="javascript:void(0)">管理办法</a></li>
+            <li><a href="javascript:void(0)">Introduction</a></li>
+            <li><a href="javascript:void(0)">Use Guide</a></li>
+            <li><a href="javascript:void(0)">Contact</a></li>
+            <li><a href="javascript:void(0)">Management Method</a></li>
           </ul>
         </li>
          <li>
@@ -162,12 +162,8 @@ Ext.onReady(function(){
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更换主题</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp; Theme</a>
         </li>
       </ul>
     </div>
@@ -178,29 +174,29 @@ Ext.onReady(function(){
         <ul>
           
           <li>
-            <a href="javascript:void(0)">图书管理</a>
+            <a href="javascript:void(0)">Book Management</a>
             <ul>
-              <li><a href="<%=request.getContextPath()%>/pages/adminPages/literatureCategoryList.jsp">类别管理</a></li>
-              <li><a href="<%=request.getContextPath()%>/pages/adminPages/literatureList.jsp">图书列表</a></li>
+              <li><a href="<%=request.getContextPath()%>/pages/adminPages/literatureCategoryList.jsp">Category Management</a></li>
+              <li><a href="<%=request.getContextPath()%>/pages/adminPages/literatureList.jsp">Book List</a></li>
             </ul>
           </li>
            <li>
-            <a href="javascript:void(0)">借阅管理</a>
+            <a href="javascript:void(0)">Borrow Info</a>
             <ul>
-              <li><a href="<%=request.getContextPath()%>/pages/adminPages/borrowList.jsp">借阅信息列表</a></li>
-              <li><a href="<%=request.getContextPath()%>/pages/adminPages/borrowLiteratureList.jsp">书目信息查询</a></li>
+              <li><a href="<%=request.getContextPath()%>/pages/adminPages/borrowList.jsp">Borrow Info List</a></li>
+              <li><a href="<%=request.getContextPath()%>/pages/adminPages/borrowLiteratureList.jsp">Book Info</a></li>
             </ul>
           </li>
-          <li><a href="javascript:void(0)">员工管理</a>
+          <li><a href="javascript:void(0)">Librarian Management</a>
             <ul>
-              <li><a href="<%=request.getContextPath()%>/pages/adminPages/libuserList.jsp">员工列表</a></li>
-              <li><a href="<%=request.getContextPath()%>/pages/adminPages/libuserChangePwd.jsp">修改密码</a></li>
+              <li><a href="<%=request.getContextPath()%>/pages/adminPages/libuserList.jsp">Librarian Info</a></li>
+              <li><a href="<%=request.getContextPath()%>/pages/adminPages/libuserChangePwd.jsp">Change Password</a></li>
             </ul>
           </li>
           <li>
-            <a href="javascript:void(0)">学生管理</a>
+            <a href="javascript:void(0)">Student Management</a>
             <ul>
-              <li><a href="<%=request.getContextPath()%>/pages/adminPages/studentList.jsp">学生列表</a></li>
+              <li><a href="<%=request.getContextPath()%>/pages/adminPages/studentList.jsp">Student List</a></li>
             </ul>
           </li>
         </ul>
@@ -217,19 +213,19 @@ Ext.onReady(function(){
           <img alt="police" src="<%=request.getContextPath()%>/images/book.jpg"></img>
         </div>
         <div id="f_copyright_cn">
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;联系电话：13608817451</span>　<br/><br/>　
-          <span>电子邮件：zk.yang1012@gmail.com</span><br/>
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;Tel: 480-321-6877</span>　<br/><br/>　
+          <span>Email：zyang64@asu.edu</span><br/>
         </div>
         <div id="f_contentus">
-          <span>&ensp;通讯地址：昆明市五华区翠湖北路2号云南大学东二院1幢512室</span><br /><br />
-          <span>&ensp;<a href="<%=request.getContextPath()%>/pages/studentPages/studentPage.jsp"><font color="white">前台入口</font></a>&nbsp;|&nbsp;
-     <a href="<%=request.getContextPath()%>/pages/userPages/userPage.jsp">员工入口</a></span>
+          <span>&ensp;Arizona State University</span><br /><br />
+          <span>&ensp;<a href="<%=request.getContextPath()%>/pages/studentPages/studentPage.jsp"><font color="white">Front Page Entrance</font></a>&nbsp;|&nbsp;
+     <a href="<%=request.getContextPath()%>/pages/userPages/userPage.jsp">Librarian Entrance</a></span>
         </div>
         <div style="clear:both"></div>
       </div>
-      <div id="f_copyright_en">
-        <span>Copyright © 2012 - 2013 Zongkun Yang All Rights Reserved.</span><br /><span>云南大学 杨宗昆 版权所有</span>     
-      </div>
+      <!-- <div id="f_copyright_en">
+        <span>Copyright © 2012 - 2013 Zongkun Yang All Rights Reserved.</span><br /><span>ASU Zongkun Yang</span>     
+      </div> -->
     </div>    
   </div>	
 </body>
