@@ -5,7 +5,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/main.css" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Library Management System123</title>
+  <title>Library Management System</title>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/jquery.ui.css" />
   <script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.js"></script>
   <script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.ui.js"></script>
