@@ -5,6 +5,11 @@
 <struts>
 	<constant name="struts.objectFactory" value="spring" />
 	<package name="root" extends="struts-default" namespace="/">
+<!--图片上传-->
+		<action name="uploadPhoto" class="UploadAction" method="uploadPhoto">  
+            <!-- <param name="savePath">/photo</param>  --> 
+            <result name="success">pages/adminPages/retvalue.jsp</result>  
+        </action> 
 <!--管理员登陆注销-->
 		<action name="login" class="LibuserAction" method="login">
 			<result name="success">pages/adminPages/retvalue.jsp</result>

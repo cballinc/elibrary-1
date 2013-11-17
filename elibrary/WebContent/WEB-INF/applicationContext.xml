@@ -55,6 +55,10 @@
 			<ref bean="dataSource"/>
 		</property>
 	</bean>
+	<!--文件上传upload-->
+	<bean id="UploadAction" class="com.akun.elibrary.action.UploadAction">
+    	<!-- <property name="userBO" ref="userBO"/> -->
+    </bean>
     <!--管理员登录libuser-->
     <bean id="userDAO" class="com.akun.elibrary.dao.imp.LibuserDAOImpl">
         <property name="sqlMapClient" ref="sqlMapClient"></property>

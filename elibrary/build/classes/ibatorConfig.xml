@@ -2,18 +2,19 @@
 <!DOCTYPE ibatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN" "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd" >
 <ibatorConfiguration >
   <!--指定数据库驱动包路径 -->
-  <classPathEntry location="D:\Jwork\workspace\elibrary\WebContent\WEB-INF\lib\sqljdbc4.jar" />
+  <classPathEntry location="/Users/akun1012/git/elibrary/elibrary/WebContent/WEB-INF/lib/mysql-connector-java-5.1.27-bin.jar" />
   <ibatorContext id="context1" >
-    <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" connectionURL="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=elibrary" userId="sa" password="infodragon" />
+<!--     <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" connectionURL="jdbc:sqlserver://127.0.0.1:3306;DatabaseName=elibrary" userId="root" password="" />-->  
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306;DatabaseName=elibrary" userId="root" password="123456" />    
     <javaModelGenerator targetPackage="com.akun.elibrary.bean" targetProject="elibrary" />
     <sqlMapGenerator targetPackage="com.akun.elibrary.sqlmap" targetProject="elibrary" />
     <daoGenerator targetPackage="com.akun.elibrary.dao" targetProject="elibrary" type="SPRING" />
-    <!--<table schema="dbo" tableName="student" />
+    <table schema="dbo" tableName="student" />
     <table schema="dbo" tableName="borrowInfo" />
     <table schema="dbo" tableName="category" />
     <table schema="dbo" tableName="classes" />
     <table schema="dbo" tableName="literature" />
-    <table schema="dbo" tableName="literatureForBorrow" />-->
+    <table schema="dbo" tableName="literatureForBorrow" />
     <table schema="dbo" tableName="borrowInfo" />
   </ibatorContext>
 </ibatorConfiguration>

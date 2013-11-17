@@ -56,8 +56,6 @@ var borrowLiteratureListGrid = new Ext.grid.GridPanel({
 	}
 });
 
-
-
 //列表主显panel 
 var borrowLiteratureListPanel = new Ext.Panel( {
 	title : "<center><p><font size=3>Book Borrrow Info</font></p></center>",
