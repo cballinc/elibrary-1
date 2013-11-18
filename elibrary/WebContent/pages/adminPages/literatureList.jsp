@@ -27,9 +27,10 @@ var store = new Ext.data.JsonStore({//数据源
 	totalProperty : "total",
 	fields:["literaturename","categoryid","author","press","price","num","lindex","literatureid","outnum"]
 });
-function renderPhoto(val) {
-    return '<a href="mailto:' + val + '">'+ '<img src="' + IMG_EMAIL + '"> ' + val  +'</a>';
-}
+/* function renderPhoto(val) {
+	alert('<a href="#" target="_blank"><img src="' + val + 'FileImage"> Photo</a>');
+    return '<a href="#" target=_blank"><img src="' + val + 'FileImage"> Photo</a>';
+} */
 var limit=100;
 var sm=new Ext.grid.CheckboxSelectionModel();//全选/反选 
 var cm = new Ext.grid.ColumnModel([
@@ -116,12 +117,13 @@ var cm = new Ext.grid.ColumnModel([
 			id : "pro_edField6"
 		}),
 		sortable : true
-	},{
+	}
+	/* ,{
 		header : "Photo",
-		dataIndex : "categoryid",
+		dataIndex : "literatureid",
 		width : 70,
 		renderer: renderPhoto
-	}
+	} */
 ]);
 
 var literatureGrid = new Ext.grid.EditorGridPanel({
@@ -133,6 +135,7 @@ var literatureGrid = new Ext.grid.EditorGridPanel({
 	cm : cm,
 	sm : sm,
 	store : store
+
 });
 var literaturenameTextFeild=new Ext.form.TextField({
 	margins : '0 0 0 0',

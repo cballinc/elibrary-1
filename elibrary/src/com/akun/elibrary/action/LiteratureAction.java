@@ -25,13 +25,34 @@ public class LiteratureAction extends ActionSupport {
      * @return
      */
     public String listLiterature(){
-    	if(key==null){
+    	if(key==""){
     		key="";
     	}
     	System.out.println(key);
-    	List<Literature> list = (List<Literature>)literatureBO.selectByKey(key);
+    	List<Literature> list  = null;
+    	String booknameSearch = "";
+		String authorSearch = "";
+		if (!key.contains("_")){
+			booknameSearch = key;
+		}else if (key.trim()!="_"&&!"_".equals(key.trim())){
+			key = " "+key+" ";
+			if(key.split("_")[0]!=null){
+				booknameSearch = key.split("_")[0].trim();				
+			}
+			if(key.split("_")[1]!=null){
+	    		authorSearch = key.split("_")[1].trim(); 
+			}
+		}
+		System.out.println(booknameSearch);
+		System.out.println(authorSearch);
+
+    	if(authorSearch==""||"".equals(authorSearch)||authorSearch==null){
+    		list = (List<Literature>)literatureBO.selectByKey(booknameSearch);
+    	}else{
+    		list = (List<Literature>)literatureBO.selectByNameAndAuthor(booknameSearch,authorSearch);
+    	}
     	retvalue="{\"nodes\":";
-    	if(list!=null){
+		if(list!=null){
     		retvalue += JSONArray.fromObject(list);
     	}else{
     		retvalue += "[]";

@@ -112,6 +112,13 @@ var query = new Ext.form.TextField({
 		this.el.on("keypress", keyPress, this);
 	}
 });
+
+var queryAuthor = new Ext.form.TextField({
+	id:"queryAuthorforlist",
+	anchor:'90%',
+	enableKeyEvents : true
+});
+
 store.on("beforeload", function(){
 	store.baseParams.searchAddition = query.getRawValue();
 });
@@ -123,7 +130,7 @@ var queryButton = new Ext.Button({
 	text:'Search',
 	width:'30',
 	handler:function(){
-		var queryValue = query.getValue();
+		var queryValue = query.getValue()+'_'+queryAuthor.getValue();
 		store.reload({
 			params :{key:queryValue,start:0,limit:limit}
 		});
@@ -137,11 +144,15 @@ var literaturePanel = new Ext.Panel( {
 	frame : true,
 	headerAsText:false,
 	height : 300,
-	tbar : ["->",{//搜索框
+	tbar : ["->",{
 		xtype :"label",
 		text:"Book Name Keywords:",
 		width:120
-	},query,"&nbsp",queryButton],
+	},query,"&nbsp","-",{
+		xtype :"label",
+		text:"Author Name Keywords:",
+		width:120
+	},queryAuthor,"&nbsp",queryButton],
 	items:[{
 		columnWidth : 1,
 		layout : 'form',

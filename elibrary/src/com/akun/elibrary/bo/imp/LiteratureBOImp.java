@@ -158,5 +158,14 @@ public class LiteratureBOImp implements LiteratureBO {
 		return list;
     }
     
-	
+    @SuppressWarnings("unchecked")
+	@Override
+    public List<Literature> selectByNameAndAuthor(String name,String author) {
+    	LiteratureExample example = new LiteratureExample();
+    	//example.createCriteria().andLiteraturenameLike(name);
+    	example.setAuthor("%"+author+"%");
+    	example.setLiteraturename("%"+name+"%");
+    	List<Literature> list = (List<Literature>)literatureDAO.selectByExample(example);
+		return list;
+    }
 }

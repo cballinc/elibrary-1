@@ -57,4 +57,6 @@ public interface LiteratureBO {
 	 * @return:
 	 */
 	List<Literature> selectByKey(String key);
+	
+	List<Literature> selectByNameAndAuthor(String name,String author);
 }
