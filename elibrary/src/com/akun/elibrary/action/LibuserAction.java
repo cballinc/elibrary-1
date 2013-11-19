@@ -1,5 +1,8 @@
 package com.akun.elibrary.action;
 
+import java.io.Serializable;
+import java.util.*;
+import java.io.*;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,8 +16,8 @@ import com.akun.elibrary.bean.LibuserExample;
 import com.akun.elibrary.bo.LibuserBO;
 import com.opensymphony.xwork2.ActionSupport;
 
-@SuppressWarnings("serial")
-public class LibuserAction extends ActionSupport {
+public class LibuserAction extends ActionSupport implements Serializable {
+	private static final long serialVersionUID = 1L;
     private	String username;
 	private String userpwd;
     private String retvalue;
