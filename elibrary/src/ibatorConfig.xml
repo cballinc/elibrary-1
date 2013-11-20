@@ -5,7 +5,7 @@
   <classPathEntry location="/Users/akun1012/git/elibrary/elibrary/WebContent/WEB-INF/lib/mysql-connector-java-5.1.27-bin.jar" />
   <ibatorContext id="context1" >
 <!--     <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" connectionURL="jdbc:sqlserver://127.0.0.1:3306;DatabaseName=elibrary" userId="root" password="" />-->  
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306;DatabaseName=elibrary" userId="root" password="123456" />    
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306;DatabaseName=elibrary" userId="elib" password="123456" />    
     <javaModelGenerator targetPackage="com.akun.elibrary.bean" targetProject="elibrary" />
     <sqlMapGenerator targetPackage="com.akun.elibrary.sqlmap" targetProject="elibrary" />
     <daoGenerator targetPackage="com.akun.elibrary.dao" targetProject="elibrary" type="SPRING" />
